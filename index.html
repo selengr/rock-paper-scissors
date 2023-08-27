@@ -1,0 +1,72 @@
+<!-- PROJECT 1 // ROCK PAPER SCISSORS GAME VERSION 1.0 -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Rock Paper Scissors | Game</title>
+        <link
+            rel="icon"
+            href="/img/favicon.ico"
+            type="image/ico"
+            sizes="96x96"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <audio id="start-music" src="sounds/start.mp3"></audio>
+        <div class="intro">
+            <h1>ROCK PAPER SCISSORS</h1>
+            <button onclick="clickSound.play()">PLAY</button>
+        </div>
+        <h1>ROCK PAPER SCISSORS</h1>
+        <div class="score-container">
+            <div class="points">
+                <h3 id="you">YOU</h3>
+                <h3 id="player-score">0</h3>
+            </div>
+            <div class="points">
+                <h3 id="draws">DRAWS</h3>
+                <h3 id="draw-score">0</h3>
+            </div>
+            <div class="points">
+                <h3 id="computer">COMPUTER</h3>
+                <h3 id="computer-score">0</h3>
+            </div>
+        </div>
+        <div class="message">
+            <h2 id="announcement">READY TO PLAY?</h2>
+        </div>
+        <div class="image-container">
+            <!-- stack overflow -->
+            <img id="player-hand" src="./img/rock_left.png" alt="rock player" />
+            <img id="computer-hand" src="./img/rock.png" alt="rock computer" />
+        </div>
+        <div class="buttons-container">
+            <button id="rock" onclick="clickSound.play()">Rock</button>
+            <button id="paper" onclick="clickSound.play()">Paper</button>
+            <button id="scissors" onclick="clickSound.play()">Scissors</button>
+        </div>
+        <div>
+            <h3 id="choose">CHOOSE WISELY</h3>
+        </div>
+        <div class="win">
+            <h1>YOU WON THE MATCH!!!</h1>
+            <button onclick="clickSound.play()">PLAY AGAIN</button>
+        </div>
+        <div class="lose">
+            <h1>YOU LOST THE MATCH</h1>
+            <button onclick="clickSound.play()">TRY AGAIN</button>
+        </div>
+        <div class="draw">
+            <h1>IT'S A STALEMATE</h1>
+            <button onclick="clickSound.play()">TRY AGAIN</button>
+        </div>
+        <script src="script.js"></script>
+        <a class="credits" target="_blank" href="https://rixiobarrios.com/"
+            >© 2020 Designed &amp; Built by Rixio Barrios</a
+        >
+    </body>
+</html>

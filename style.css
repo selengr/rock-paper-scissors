@@ -1,0 +1,604 @@
+/* PROJECT 1 // ROCK PAPER SCISSORS GAME VERSION 1.0 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* background */
+/* <---- css-tricks ----> */
+html {
+    background: url('./img/vector.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* stack overflow */
+/* fonts file */
+@font-face {
+    font-family: 'komikax';
+    src: url('./font/KOMIKAX_.ttf');
+}
+
+/* intro screen */
+.intro {
+    background: #fcc02e;
+    width: 100vw;
+    height: 800px;
+    position: fixed;
+    margin: -55px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transition: opacity 0.5s ease;
+    z-index: 2;
+}
+
+@media (max-width: 700px) {
+    .intro {
+        height: 100vh;
+    }
+}
+
+/* intro tittle (Rock Paper Scissors) */
+.intro h1 {
+    font-size: 8vh;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+
+/* stack overflow */
+.intro button {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    border: 5px solid black;
+    font-family: 'komikax';
+    font-size: 10vh;
+    color: white;
+    background: #e53935;
+    cursor: pointer;
+    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-color: black;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@media (max-width: 700px) {
+    .intro button {
+        height: 200px;
+        width: 200px;
+        font-size: 8vh;
+    }
+}
+
+.intro button:hover {
+    transform: translateY(-1rem);
+}
+
+.intro button:focus {
+    outline: none;
+}
+
+/* game tittle (Rock Paper Scissors) */
+h1 {
+    font-family: 'komikax';
+    font-size: 9vh;
+    color: white;
+    text-align: center;
+    /* css-tricks */
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+
+@media (max-width: 700px) {
+    h1 {
+        display: flex;
+        font-size: 4vh;
+        flex-direction: column;
+        align-items: center;
+        -webkit-text-stroke-width: 2px;
+        margin-top: 55px;
+    }
+}
+
+/* scores */
+.score-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: -60px;
+}
+
+/* media query */
+@media (max-width: 700px) {
+    .score-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: -5px;
+        margin-top: -10px;
+    }
+}
+
+.points {
+    display: flex;
+    flex-direction: row;
+}
+
+.points h3 {
+    margin-left: 35px;
+}
+
+@media (max-width: 700px) {
+    .points h3 {
+        margin-left: 10px;
+    }
+}
+
+/* titles for scores (You, Draw, Computer) */
+#you,
+#computer,
+#draws {
+    font-family: 'komikax';
+    font-size: 6vh;
+    color: #fcc02e;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    margin-top: -20px;
+}
+
+@media (max-width: 700px) {
+    #you,
+    #computer,
+    #draws {
+        display: flex;
+        font-size: 3vh;
+        flex-direction: row;
+        align-items: center;
+        -webkit-text-stroke-width: 2px;
+        margin-top: 20px;
+    }
+}
+
+/* score numbers */
+#player-score,
+#computer-score,
+#draw-score {
+    font-family: 'komikax';
+    color: #e53935;
+    font-size: 6vh;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    margin-top: -20px;
+}
+
+@media (max-width: 700px) {
+    #player-score,
+    #computer-score,
+    #draw-score {
+        display: flex;
+        font-size: 3vh;
+        flex-direction: row;
+        align-items: center;
+        -webkit-text-stroke-width: 2px;
+        margin-top: 20px;
+    }
+}
+
+/* interchangeable announcements (Ready to Play?) */
+/* thoughtbot.com for bounceIn animation*/
+h2 {
+    font-family: 'komikax';
+    font-size: 8vh;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    animation-duration: 2s;
+    animation-name: bounceIn;
+    animation-iteration-count: initial;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+
+@media (max-width: 700px) {
+    h2 {
+        display: flex;
+        font-size: 5vh;
+        flex-direction: row;
+        align-items: center;
+        -webkit-text-stroke-width: 2px;
+    }
+}
+
+/* images on stage */
+.image-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 300px;
+    margin: -50px 0px 0px 0px;
+}
+
+@media (max-width: 700px) {
+    .image-container {
+        height: 230px;
+        margin: 30px 0px 0px 0px;
+    }
+}
+
+#player-hand,
+#computer-hand {
+    height: 300px;
+    width: 300px;
+}
+
+@media (max-width: 700px) {
+    #player-hand,
+    #computer-hand {
+        height: 200px;
+        width: 200px;
+    }
+}
+
+/* images on stage animation */
+/* css-tricks */
+.shake {
+    animation: 0.45s shake 3;
+}
+@keyframes shake {
+    0% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(-50px);
+    }
+}
+
+/* player's choices */
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 130px;
+    margin: 0px 0px -20px 0px;
+}
+
+@media (max-width: 700px) {
+    .buttons-container {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* choice images */
+/* stack overflow */
+#rock {
+    background: url('./img/rock_button.png') 0 0 transparent;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border: none;
+    height: 200px;
+    width: 200px;
+    color: transparent;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.25s ease-in;
+    font-size: 0;
+}
+
+#rock:hover {
+    transform: translateY(-1rem);
+}
+
+/* medium.com */
+#rock:focus {
+    outline: none;
+}
+
+#paper {
+    background: url('./img/paper_button.png') 0 0 transparent;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border: none;
+    height: 200px;
+    width: 200px;
+    color: transparent;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.25s ease-in;
+    font-size: 0;
+}
+
+#paper:hover {
+    transform: translateY(-1rem);
+}
+
+#paper:focus {
+    outline: none;
+}
+
+#scissors {
+    background: url('./img/scissors_button.png') 0 0 transparent;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border: none;
+    height: 200px;
+    width: 200px;
+    color: transparent;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.25s ease-in;
+    font-size: 0;
+    text-decoration: none;
+}
+
+#scissors:hover {
+    transform: translateY(-1rem);
+}
+
+#scissors:focus {
+    outline: none;
+}
+
+@media (max-width: 700px) {
+    #rock,
+    #paper,
+    #scissors {
+        display: flex;
+        background-size: 80%;
+    }
+}
+
+/* choose wisely message */
+#choose {
+    font-family: 'komikax';
+    font-size: 8vh;
+    text-align: center;
+    color: white;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+
+@media (max-width: 700px) {
+    #choose {
+        display: flex;
+        font-size: 6vh;
+        flex-direction: row;
+        justify-content: center;
+        margin: -40px 0 0 0;
+    }
+}
+
+/* screens */
+.win {
+    background: #fcc02e;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transition: opacity 0.5s ease;
+    z-index: 2;
+    top: 0;
+}
+
+.win h1 {
+    font-size: 10vh;
+}
+
+@media (max-width: 700px) {
+    .win h1 {
+        font-size: 8vh;
+    }
+}
+
+.win button {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    border: 5px solid black;
+    font-family: 'komikax';
+    font-size: 10vh;
+    color: white;
+    background: #e53935;
+    cursor: pointer;
+    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-color: black;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@media (max-width: 700px) {
+    .win button {
+        height: 200px;
+        width: 200px;
+        font-size: 8vh;
+    }
+}
+
+.win button:hover {
+    transform: translateY(-1rem);
+}
+
+.win button:focus {
+    outline: none;
+}
+
+.lose {
+    background: #fcc02e;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transition: opacity 0.5s ease;
+    z-index: 2;
+    top: 0;
+}
+
+.lose h1 {
+    font-size: 10vh;
+}
+
+@media (max-width: 700px) {
+    .lose h1 {
+        font-size: 8vh;
+    }
+}
+
+.lose button {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    border: 5px solid black;
+    font-family: 'komikax';
+    font-size: 10vh;
+    color: white;
+    background: #e53935;
+    cursor: pointer;
+    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-color: black;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@media (max-width: 700px) {
+    .lose button {
+        height: 200px;
+        width: 200px;
+        font-size: 8vh;
+    }
+}
+
+.lose button:hover {
+    transform: translateY(-1rem);
+}
+
+.lose button:focus {
+    outline: none;
+}
+
+.draw {
+    background: #fcc02e;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transition: opacity 0.5s ease;
+    z-index: 2;
+    top: 0;
+}
+
+.draw h1 {
+    font-size: 10vh;
+}
+
+@media (max-width: 700px) {
+    .draw h1 {
+        font-size: 8vh;
+    }
+}
+
+.draw button {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    border: 5px solid black;
+    font-family: 'komikax';
+    font-size: 10vh;
+    color: white;
+    background: #e53935;
+    cursor: pointer;
+    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-color: black;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@media (max-width: 700px) {
+    .draw button {
+        height: 200px;
+        width: 200px;
+        font-size: 8vh;
+    }
+}
+
+.draw button:hover {
+    transform: translateY(-1rem);
+}
+
+.draw button:focus {
+    outline: none;
+}
+
+@media (max-width: 700px) {
+    .win h1,
+    .draw h1,
+    .lose h1 {
+        font-size: 8vh;
+    }
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0.75);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.1);
+        opacity: 1;
+    }
+    60% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.credits {
+    font-family: 'komikax';
+    font-size: 1.5vh;
+    color: white;
+    position: fixed;
+    top: 10px;
+    left: 0px;
+    right: 0px;
+}
+
+a {
+    text-decoration: none;
+}
